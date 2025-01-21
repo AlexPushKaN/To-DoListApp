@@ -13,9 +13,11 @@
 		4D97FEAA2D3FA347005B1D23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D97FEA82D3FA347005B1D23 /* Main.storyboard */; };
 		4D97FEAC2D3FA348005B1D23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D97FEAB2D3FA348005B1D23 /* Assets.xcassets */; };
 		4D97FEAF2D3FA348005B1D23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D97FEAD2D3FA348005B1D23 /* LaunchScreen.storyboard */; };
+		E915FD3901AEBBEFD4C5D555 /* Pods_To_DoListApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C28EE535406F156C537FFD /* Pods_To_DoListApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22F551B5378CC1B792327112 /* Pods-To-DoListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-To-DoListApp.debug.xcconfig"; path = "Target Support Files/Pods-To-DoListApp/Pods-To-DoListApp.debug.xcconfig"; sourceTree = "<group>"; };
 		4D97FE9F2D3FA347005B1D23 /* To-DoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "To-DoListApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D97FEA22D3FA347005B1D23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D97FEA42D3FA347005B1D23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +26,8 @@
 		4D97FEAB2D3FA348005B1D23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D97FEAE2D3FA348005B1D23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4D97FEB02D3FA348005B1D23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51A1426E9EBBEB355A1520C2 /* Pods-To-DoListApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-To-DoListApp.release.xcconfig"; path = "Target Support Files/Pods-To-DoListApp/Pods-To-DoListApp.release.xcconfig"; sourceTree = "<group>"; };
+		94C28EE535406F156C537FFD /* Pods_To_DoListApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_To_DoListApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E915FD3901AEBBEFD4C5D555 /* Pods_To_DoListApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		422DA95E4AD9F9D4A11E560B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				94C28EE535406F156C537FFD /* Pods_To_DoListApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4D97FE962D3FA347005B1D23 = {
 			isa = PBXGroup;
 			children = (
 				4D97FEA12D3FA347005B1D23 /* To-DoListApp */,
 				4D97FEA02D3FA347005B1D23 /* Products */,
+				B07E292FD7629CB297C2EA52 /* Pods */,
+				422DA95E4AD9F9D4A11E560B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -67,6 +82,15 @@
 			path = "To-DoListApp";
 			sourceTree = "<group>";
 		};
+		B07E292FD7629CB297C2EA52 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				22F551B5378CC1B792327112 /* Pods-To-DoListApp.debug.xcconfig */,
+				51A1426E9EBBEB355A1520C2 /* Pods-To-DoListApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +98,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4D97FEB32D3FA348005B1D23 /* Build configuration list for PBXNativeTarget "To-DoListApp" */;
 			buildPhases = (
+				6BDA2338458F445EE4905D4C /* [CP] Check Pods Manifest.lock */,
 				4D97FE9B2D3FA347005B1D23 /* Sources */,
 				4D97FE9C2D3FA347005B1D23 /* Frameworks */,
 				4D97FE9D2D3FA347005B1D23 /* Resources */,
+				83A0C14EEEFAE075C24DC1FF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -132,6 +158,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6BDA2338458F445EE4905D4C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-To-DoListApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		83A0C14EEEFAE075C24DC1FF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-To-DoListApp/Pods-To-DoListApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-To-DoListApp/Pods-To-DoListApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-To-DoListApp/Pods-To-DoListApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4D97FE9B2D3FA347005B1D23 /* Sources */ = {
@@ -203,7 +271,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -218,7 +286,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -266,7 +334,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -275,7 +343,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -287,6 +355,7 @@
 		};
 		4D97FEB42D3FA348005B1D23 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22F551B5378CC1B792327112 /* Pods-To-DoListApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -315,6 +384,7 @@
 		};
 		4D97FEB52D3FA348005B1D23 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51A1426E9EBBEB355A1520C2 /* Pods-To-DoListApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
