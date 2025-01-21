@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TaskViewController.swift
 //  To-DoListApp
 //
 //  Created by Александр Муклинов on 21.01.2025.
@@ -7,13 +7,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+final class TaskViewController: UIViewController {
+    
+    private var task: Task?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        view.backgroundColor = .yellow
     }
-
-
 }
-
