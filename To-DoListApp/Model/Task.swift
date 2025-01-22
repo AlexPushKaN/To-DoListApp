@@ -18,7 +18,7 @@ final class Task: Object {
     @objc dynamic var name: String = ""
     @objc dynamic var descript: String = ""
     @objc dynamic var date: Date?
-    @objc dynamic var isCompleted = false
+    @objc dynamic var isCompleted: Bool = false
     
     override static func primaryKey() -> String? {
         return Task.Property.id.rawValue

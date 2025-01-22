@@ -92,7 +92,6 @@ extension TasksListController {
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        guard let item = items?[indexPath.row] else { return false }
         return true
     }
     
