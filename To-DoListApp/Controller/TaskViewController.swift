@@ -6,17 +6,27 @@
 //
 
 import UIKit
+import Photos
 
 final class TaskViewController: UIViewController {
-    //MARK: - properties
+    // MARK: - properties
+    lazy private var addImageButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setImage(UIImage(systemName: "paperclip"), for: .normal)
+        button.tintColor = .systemRed
+        button.addTarget(self, action: #selector(attachImage), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     private var taskView: TaskView
     private var task: Task?
     private var isNewTask: Bool
-    
+    private var selectedImage: UIImage?
+
     init(task: Task?, taskView: TaskView) {
         self.taskView = taskView
-        isNewTask = task == nil ? true : false
-        self.task = task == nil ? Task() : task
+        isNewTask = (task == nil)
+        self.task = task ?? Task()
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -25,13 +35,14 @@ final class TaskViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - lifecycle
+    // MARK: - lifecycle
     override func loadView() {
         view = taskView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        taskView.descriptionStackView.addArrangedSubview(addImageButton)
         title = isNewTask ? "Новая задача" : "Редактировать задачу"
         taskView.setting(from: task)
         taskView.completion = { [weak self] taskData in
@@ -43,15 +54,15 @@ final class TaskViewController: UIViewController {
         }
     }
     
-    //MARK: - actions
+    // MARK: - methods
     private func saveOrUpdateTask(name: String, description: String, date: Date) {
         guard let task else { return }
         do {
             let name = try name.validate()
             if isNewTask {
-                Task.add(item: Task(name: name, descript: description, date: date))
+                Task.add(item: Task(name: name, descript: description, date: date, image: selectedImage))
             } else {
-                task.update(name: name, descript: description, date: date)
+                task.update(name: name, descript: description, date: date, image: selectedImage)
             }
             self.navigationController?.popViewController(animated: true)
         } catch let error as String.ValidationError {
@@ -71,5 +82,53 @@ final class TaskViewController: UIViewController {
                 message: error.localizedDescription
             )
         }
+    }
+    
+    // MARK: - actions
+    @objc private func attachImage() {
+        PHPhotoLibrary.requestAuthorization { [weak self] status in
+            guard let self else { return }
+            switch status {
+            case .authorized:
+                DispatchQueue.main.async {
+                    let imagePicker = UIImagePickerController()
+                    imagePicker.delegate = self
+                    imagePicker.sourceType = .photoLibrary
+                    imagePicker.allowsEditing = true
+                    self.present(imagePicker, animated: true, completion: nil)
+                }
+            case .denied, .restricted:
+                DispatchQueue.main.async {
+                    UIAlertController.showAlert(
+                        on: self,
+                        title: "Ошибка",
+                        message: "Приложению не разрешен доступ к фотобиблиотеке, откройте доступ в настройках."
+                    )
+                }
+            case .notDetermined, .limited:
+                break
+            @unknown default:
+                break
+            }
+        }
+    }
+}
+
+// MARK: - UIImagePickerControllerDelegate, UINavigationControllerDelegate
+extension TaskViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        dismiss(animated: true, completion: nil)
+        if let editedImage = info[.editedImage] as? UIImage {
+            selectedImage = editedImage
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            selectedImage = originalImage
+        }
+        
+        addImageButton.setImage(UIImage(systemName: "rectangle.and.paperclip"), for: .normal)
+        addImageButton.tintColor = .systemGreen
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }

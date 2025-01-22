@@ -19,16 +19,18 @@ final class Task: Object {
     @objc dynamic var descript: String = ""
     @objc dynamic var date: Date?
     @objc dynamic var isCompleted: Bool = false
+    @objc dynamic var imageData: Data?
     
     override static func primaryKey() -> String? {
         return Task.Property.id.rawValue
     }
     
-    convenience init(name: String, descript: String, date: Date?) {
+    convenience init(name: String, descript: String, date: Date? = nil, image: UIImage? = nil) {
         self.init()
         self.name = name
         self.descript = descript
         self.date = date
+        self.imageData = image?.jpegData(compressionQuality: 0.5)
     }
 }
 
@@ -39,31 +41,52 @@ extension Task {
     }
     
     static func add(item: Task, in realm: Realm = try! Realm()) {
-        try! realm.write {
-            realm.add(item)
+        do {
+            try realm.write {
+                realm.add(item)
+            }
+        } catch {
+            print("Ошибка записи: \(error.localizedDescription)")
         }
     }
     
     func toggleCompleted() {
         guard let realm = realm else { return }
-        try! realm.write {
-            isCompleted = !isCompleted
+        do {
+            try realm.write {
+                isCompleted = !isCompleted
+            }
+        } catch {
+            write(error: error)
         }
     }
     
     func delete() {
         guard let realm = realm else { return }
-        try! realm.write {
-            realm.delete(self)
+        do {
+            try realm.write {
+                realm.delete(self)
+            }
+        } catch {
+            write(error: error)
         }
     }
     
-    func update(name: String, descript: String, date: Date?) {
+    func update(name: String, descript: String, date: Date?, image: UIImage?) {
         guard let realm = realm else { return }
-        try! realm.write {
-            self.name = name
-            self.descript = descript
-            self.date = date
+        do {
+            try realm.write {
+                self.name = name
+                self.descript = descript
+                self.date = date
+                self.imageData = image?.jpegData(compressionQuality: 0.5)
+            }
+        } catch {
+            write(error: error)
         }
+    }
+    
+    private func write(error: Error) {
+        print("Ошибка записи: \(error.localizedDescription)")
     }
 }

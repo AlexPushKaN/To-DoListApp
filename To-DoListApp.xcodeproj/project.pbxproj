@@ -424,6 +424,7 @@
 				DEVELOPMENT_TEAM = SR6T9Z9RAZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "To-DoListApp/Info.plist";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Этому приложению нужен доступ к вашим фотографиям для добавления изображений к задачам.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -452,6 +453,7 @@
 				DEVELOPMENT_TEAM = SR6T9Z9RAZ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "To-DoListApp/Info.plist";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Этому приложению нужен доступ к вашим фотографиям для добавления изображений к задачам.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
