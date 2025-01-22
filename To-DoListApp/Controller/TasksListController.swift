@@ -9,15 +9,23 @@ import UIKit
 import RealmSwift
 
 final class TasksListController: UITableViewController {
+    //MARK: - properties
     private var items: Results<Task>?
     private var itemsToken: NotificationToken?
     
+    //MARK: - lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Список задач"
+        view.backgroundColor = .systemBackground
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addItem))
         navigationItem.rightBarButtonItem = addButton
-        title = "Список задач"
+        navigationItem.rightBarButtonItem?.tintColor = .systemRed
+        
+        let backButton = UIBarButtonItem()
+        backButton.tintColor = .systemRed
+        navigationItem.backBarButtonItem = backButton
         
         tableView.register(TaskTableViewCell.self, forCellReuseIdentifier: TaskTableViewCell.identifier)
         items = Task.all()
@@ -43,10 +51,10 @@ final class TasksListController: UITableViewController {
         itemsToken?.invalidate()
     }
     
-    // MARK: - Actions
+    //MARK: - actions
     @objc private func addItem() {
         let taskViewController = ViewControllerFactory.makeTaskViewController()
-        present(taskViewController, animated: true)
+        navigationController?.pushViewController(taskViewController, animated: true)
     }
     
     func toggleItem(_ item: Task) {
@@ -58,7 +66,7 @@ final class TasksListController: UITableViewController {
     }
 }
 
-// MARK: - TableViewDataSource
+//MARK: - tableViewDataSource
 extension TasksListController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items?.count ?? 0
@@ -66,10 +74,7 @@ extension TasksListController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TaskTableViewCell.identifier, for: indexPath) as? TaskTableViewCell,
-              let item = items?[indexPath.row] else {
-            return TaskTableViewCell(frame: .zero)
-        }
-        
+              let item = items?[indexPath.row] else { return TaskTableViewCell(frame: .zero) }
         cell.configureWith(item) { [weak self] item in
             self?.toggleItem(item)
         }
@@ -77,13 +82,13 @@ extension TasksListController {
     }
 }
 
-// MARK: - TableViewDelegate
+//MARK: - tableViewDelegate
 extension TasksListController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let item = items?[indexPath.row] else { return }
         let taskViewController = ViewControllerFactory.makeTaskViewController(task: item)
-        present(taskViewController, animated: true)
+        navigationController?.pushViewController(taskViewController, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

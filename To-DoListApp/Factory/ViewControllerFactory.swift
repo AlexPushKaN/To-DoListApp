@@ -9,10 +9,8 @@ import UIKit
 
 final class ViewControllerFactory {
     static func makeTaskViewController(task: Task? = nil) -> TaskViewController {
-        let taskViewController = TaskViewController()
-        taskViewController.task = task
-        taskViewController.modalPresentationStyle = .automatic
-        taskViewController.modalTransitionStyle = .flipHorizontal
+        let taskView = TaskView()
+        let taskViewController = TaskViewController(task: task, taskView: taskView)
         return taskViewController
     }
 }

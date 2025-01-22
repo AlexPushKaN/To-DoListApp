@@ -9,35 +9,39 @@ import Foundation
 import RealmSwift
 
 final class Task: Object {
+    //MARK: - properties
     enum Property: String {
-        case id, text, isCompleted
+        case id, name, descript, date, isCompleted
     }
     
-    @objc dynamic var id = UUID().uuidString
-    @objc dynamic var text = ""
+    @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var name: String = ""
+    @objc dynamic var descript: String = ""
+    @objc dynamic var date: Date?
     @objc dynamic var isCompleted = false
     
     override static func primaryKey() -> String? {
         return Task.Property.id.rawValue
     }
     
-    convenience init(_ text: String) {
+    convenience init(name: String, descript: String, date: Date?) {
         self.init()
-        self.text = text
+        self.name = name
+        self.descript = descript
+        self.date = date
     }
 }
 
+//MARK: - methods Task-object and work with Realm
 extension Task {
     static func all(in realm: Realm = try! Realm()) -> Results<Task> {
         return realm.objects(Task.self).sorted(byKeyPath: Task.Property.isCompleted.rawValue)
     }
     
-    static func add(text: String, in realm: Realm = try! Realm()) -> Task {
-        let item = Task(text)
+    static func add(item: Task, in realm: Realm = try! Realm()) {
         try! realm.write {
             realm.add(item)
         }
-        return item
     }
     
     func toggleCompleted() {
@@ -54,10 +58,12 @@ extension Task {
         }
     }
     
-    func update(text: String) {
+    func update(name: String, descript: String, date: Date?) {
         guard let realm = realm else { return }
         try! realm.write {
-            self.text = text
+            self.name = name
+            self.descript = descript
+            self.date = date
         }
     }
 }

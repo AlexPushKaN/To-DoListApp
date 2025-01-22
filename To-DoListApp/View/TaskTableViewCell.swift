@@ -8,17 +8,18 @@
 import UIKit
 
 final class TaskTableViewCell: UITableViewCell {
+    //MARK: - properties
     static let identifier = String(describing: TaskTableViewCell.self)
     private var onToggleCompleted: ((Task) -> Void)?
     
     private var item: Task?
-    private lazy var label: UILabel = {
+    private lazy var taskLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
-    private lazy var button: UIButton = {
+    private lazy var taskCompleteButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(toggleCompleted), for: .touchUpInside)
@@ -35,24 +36,25 @@ final class TaskTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - setupUI
     private func setupUI() {
-        contentView.addSubview(label)
-        contentView.addSubview(button)
-        
+        contentView.addSubview(taskLabel)
+        contentView.addSubview(taskCompleteButton)
+
         NSLayoutConstraint.activate([
-            label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16.0),
-            label.trailingAnchor.constraint(equalTo: button.leadingAnchor, constant: -8.0),
-            label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            taskLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16.0),
+            taskLabel.trailingAnchor.constraint(equalTo: taskCompleteButton.leadingAnchor, constant: -8.0),
+            taskLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
-            button.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16.0),
-            button.widthAnchor.constraint(equalToConstant: 30.0),
-            button.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            taskCompleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16.0),
+            taskCompleteButton.widthAnchor.constraint(equalToConstant: 30.0),
+            taskCompleteButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
-            contentView.topAnchor.constraint(equalTo: label.topAnchor, constant: -8.0),
-            contentView.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: 8.0)
+            contentView.topAnchor.constraint(equalTo: taskLabel.topAnchor, constant: -8.0),
+            contentView.bottomAnchor.constraint(equalTo: taskLabel.bottomAnchor, constant: 8.0)
         ])
     }
-    
+    //MARK: - actions
     @objc private func toggleCompleted() {
         guard let item = item else { fatalError("Missing task") }
         onToggleCompleted?(item)
@@ -61,8 +63,8 @@ final class TaskTableViewCell: UITableViewCell {
     func configureWith(_ item: Task, onToggleCompleted: ((Task) -> Void)? = nil) {
         self.item = item
         self.onToggleCompleted = onToggleCompleted
-        label.attributedText = NSAttributedString(string: item.text,
+        taskLabel.attributedText = NSAttributedString(string: item.name,
                                                   attributes: item.isCompleted ? [.strikethroughStyle: true] : [:])
-        button.setTitle(item.isCompleted ? "✅" : "📌", for: .normal)
+        taskCompleteButton.setTitle(item.isCompleted ? "✅" : "📌", for: .normal)
     }
 }

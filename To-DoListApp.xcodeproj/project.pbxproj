@@ -17,6 +17,9 @@
 		4D97FEDF2D3FB1B8005B1D23 /* UITableView+RealmChanges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97FEDE2D3FB1B8005B1D23 /* UITableView+RealmChanges.swift */; };
 		4D97FEE32D3FC84C005B1D23 /* TaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97FEE22D3FC84C005B1D23 /* TaskViewController.swift */; };
 		4D97FEE62D3FCB10005B1D23 /* ViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97FEE52D3FCB10005B1D23 /* ViewControllerFactory.swift */; };
+		4D97FEE82D3FE7E1005B1D23 /* TaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97FEE72D3FE7E1005B1D23 /* TaskView.swift */; };
+		4D97FEEC2D401BA5005B1D23 /* UIAlertController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97FEEB2D401BA5005B1D23 /* UIAlertController+Extensions.swift */; };
+		4D97FEEE2D401D32005B1D23 /* String+Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97FEED2D401D32005B1D23 /* String+Validation.swift */; };
 		E915FD3901AEBBEFD4C5D555 /* Pods_To_DoListApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94C28EE535406F156C537FFD /* Pods_To_DoListApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +37,9 @@
 		4D97FEDE2D3FB1B8005B1D23 /* UITableView+RealmChanges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+RealmChanges.swift"; sourceTree = "<group>"; };
 		4D97FEE22D3FC84C005B1D23 /* TaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewController.swift; sourceTree = "<group>"; };
 		4D97FEE52D3FCB10005B1D23 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
+		4D97FEE72D3FE7E1005B1D23 /* TaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskView.swift; sourceTree = "<group>"; };
+		4D97FEEB2D401BA5005B1D23 /* UIAlertController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extensions.swift"; sourceTree = "<group>"; };
+		4D97FEED2D401D32005B1D23 /* String+Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Validation.swift"; sourceTree = "<group>"; };
 		51A1426E9EBBEB355A1520C2 /* Pods-To-DoListApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-To-DoListApp.release.xcconfig"; path = "Target Support Files/Pods-To-DoListApp/Pods-To-DoListApp.release.xcconfig"; sourceTree = "<group>"; };
 		94C28EE535406F156C537FFD /* Pods_To_DoListApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_To_DoListApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -105,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				4D97FEDB2D3FB140005B1D23 /* TaskTableViewCell.swift */,
+				4D97FEE72D3FE7E1005B1D23 /* TaskView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -122,6 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				4D97FEDE2D3FB1B8005B1D23 /* UITableView+RealmChanges.swift */,
+				4D97FEEB2D401BA5005B1D23 /* UIAlertController+Extensions.swift */,
+				4D97FEED2D401D32005B1D23 /* String+Validation.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -257,7 +266,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D97FEE82D3FE7E1005B1D23 /* TaskView.swift in Sources */,
 				4D97FEDA2D3FAFE8005B1D23 /* Task.swift in Sources */,
+				4D97FEEE2D401D32005B1D23 /* String+Validation.swift in Sources */,
+				4D97FEEC2D401BA5005B1D23 /* UIAlertController+Extensions.swift in Sources */,
 				4D97FEE32D3FC84C005B1D23 /* TaskViewController.swift in Sources */,
 				4D97FEDF2D3FB1B8005B1D23 /* UITableView+RealmChanges.swift in Sources */,
 				4D97FEA72D3FA347005B1D23 /* TasksListController.swift in Sources */,
