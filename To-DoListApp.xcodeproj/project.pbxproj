@@ -73,13 +73,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4D3E61082D4175750031C919 /* FirebaseService */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FirebaseService;
-			sourceTree = "<group>";
-		};
 		4D97FE962D3FA347005B1D23 = {
 			isa = PBXGroup;
 			children = (
@@ -108,7 +101,6 @@
 				4D97FEB02D3FA348005B1D23 /* Info.plist */,
 				4D3E60FF2D4140590031C919 /* GoogleService-Info.plist */,
 				4D97FEAD2D3FA348005B1D23 /* LaunchScreen.storyboard */,
-				4D3E61082D4175750031C919 /* FirebaseService */,
 				4D97FEE42D3FCAE3005B1D23 /* Factory */,
 				4D97FEDD2D3FB183005B1D23 /* Extension */,
 				4D97FED62D3FAF94005B1D23 /* Model */,
@@ -454,8 +446,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Этому приложению нужен доступ к вашим фотографиям для добавления изображений к задачам.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -463,9 +454,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "JediClan.To-DoListApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -484,8 +478,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Этому приложению нужен доступ к вашим фотографиям для добавления изображений к задачам.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -493,9 +486,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "JediClan.To-DoListApp";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
