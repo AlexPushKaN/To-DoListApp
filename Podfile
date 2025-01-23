@@ -7,4 +7,7 @@ target 'To-DoListApp' do
 
   # Pods for To-DoListApp
   pod 'RealmSwift'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+
 end

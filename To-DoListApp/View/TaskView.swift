@@ -31,7 +31,6 @@ final class TaskView: UIView {
         textField.font = UIFont.systemFont(ofSize: 16)
         textField.returnKeyType = .next
         textField.layer.cornerRadius = 12.0
-        textField.layer.masksToBounds = true
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.systemGray4.cgColor
         return textField
@@ -57,7 +56,6 @@ final class TaskView: UIView {
         textView.font = UIFont.systemFont(ofSize: 16)
         textView.returnKeyType = .next
         textView.layer.cornerRadius = 12.0
-        textView.layer.masksToBounds = true
         textView.layer.borderWidth = 1.0
         textView.layer.borderColor = UIColor.systemGray4.cgColor
         return textView
@@ -80,7 +78,6 @@ final class TaskView: UIView {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .systemRed
         button.layer.cornerRadius = 12.0
-        button.layer.masksToBounds = true
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
         button.addTarget(self, action: #selector(saveTask), for: .touchUpInside)
         return button

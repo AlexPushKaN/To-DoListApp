@@ -22,6 +22,7 @@ final class TasksListController: UITableViewController {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addItem))
         navigationItem.rightBarButtonItem = addButton
         navigationItem.rightBarButtonItem?.tintColor = .systemRed
+        navigationItem.hidesBackButton = true
         
         let backButton = UIBarButtonItem()
         backButton.tintColor = .systemRed
