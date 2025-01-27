@@ -22,6 +22,7 @@ final class TaskViewController: UIViewController {
     private var task: Task?
     private var isNewTask: Bool
     private var selectedImage: UIImage?
+    weak var service: TaskServiceProtocol?
 
     init(task: Task?, taskView: TaskView) {
         self.taskView = taskView
@@ -60,9 +61,23 @@ final class TaskViewController: UIViewController {
         do {
             let name = try name.validate()
             if isNewTask {
-                Task.add(item: Task(name: name, descript: description, date: date, image: selectedImage))
+                if let newTask = Task.add(item: Task(
+                    name: name,
+                    descript: description,
+                    date: date, 
+                    imageData: selectedImage?.jpegData(compressionQuality: 0.5))
+                ) {
+                    service?.add(task: newTask)
+                }
             } else {
-                task.update(name: name, descript: description, date: date, image: selectedImage)
+                if let updateTask = task.update(
+                    name: name,
+                    descript: description,
+                    date: date,
+                    imageData: selectedImage?.jpegData(compressionQuality: 0.5)
+                ) {
+                    service?.update(task: updateTask)
+                }
             }
             self.navigationController?.popViewController(animated: true)
         } catch let error as String.ValidationError {

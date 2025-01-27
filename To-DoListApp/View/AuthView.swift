@@ -18,6 +18,7 @@ final class AuthView: UIView {
         let indentView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: Constants.padding, height: .zero)))
         let textField = UITextField(frame: .zero)
         textField.placeholder = "Почта"
+        textField.text = "aleksrent425@gmail.com"
         textField.leftView = indentView
         textField.leftViewMode = .always
         textField.tintColor = .systemGray
@@ -38,6 +39,7 @@ final class AuthView: UIView {
         let indentView = UIView(frame: CGRect(origin: .zero, size: CGSize(width: Constants.padding, height: .zero)))
         let textField = UITextField(frame: .zero)
         textField.placeholder = "Пароль"
+        textField.text = "12345Aa"
         textField.leftView = indentView
         textField.leftViewMode = .always
         textField.tintColor = .systemGray

@@ -11,10 +11,10 @@ import RealmSwift
 final class Task: Object {
     //MARK: - properties
     enum Property: String {
-        case id, name, descript, date, isCompleted
+        case id, name, descript, date, isCompleted, imageData
     }
     
-    @objc dynamic var id: String = UUID().uuidString
+    @objc dynamic var id: String = ""
     @objc dynamic var name: String = ""
     @objc dynamic var descript: String = ""
     @objc dynamic var date: Date?
@@ -25,12 +25,19 @@ final class Task: Object {
         return Task.Property.id.rawValue
     }
     
-    convenience init(name: String, descript: String, date: Date? = nil, image: UIImage? = nil) {
+    convenience init(
+        id: String = UUID().uuidString,
+        name: String,
+        descript: String,
+        date: Date? = nil,
+        imageData: Data? = nil
+    ) {
         self.init()
+        self.id = id
         self.name = name
         self.descript = descript
         self.date = date
-        self.imageData = image?.jpegData(compressionQuality: 0.5)
+        self.imageData = imageData
     }
 }
 
@@ -40,7 +47,7 @@ extension Task {
         return realm.objects(Task.self).sorted(byKeyPath: Task.Property.isCompleted.rawValue)
     }
     
-    static func add(item: Task, in realm: Realm = try! Realm()) {
+    static func add(item: Task, in realm: Realm = try! Realm()) -> Task? {
         do {
             try realm.write {
                 realm.add(item)
@@ -48,10 +55,11 @@ extension Task {
         } catch {
             print("Ошибка записи: \(error.localizedDescription)")
         }
+        return item
     }
     
-    func toggleCompleted() {
-        guard let realm = realm else { return }
+    func toggleCompleted() -> Task?{
+        guard let realm = realm else { return nil }
         do {
             try realm.write {
                 isCompleted = !isCompleted
@@ -59,6 +67,7 @@ extension Task {
         } catch {
             write(error: error)
         }
+        return self
     }
     
     func delete() {
@@ -72,18 +81,19 @@ extension Task {
         }
     }
     
-    func update(name: String, descript: String, date: Date?, image: UIImage?) {
-        guard let realm = realm else { return }
+    func update(name: String, descript: String, date: Date?, imageData: Data?) -> Task? {
+        guard let realm = realm else { return nil }
         do {
             try realm.write {
                 self.name = name
                 self.descript = descript
                 self.date = date
-                self.imageData = image?.jpegData(compressionQuality: 0.5)
+                self.imageData = imageData
             }
         } catch {
             write(error: error)
         }
+        return self
     }
     
     private func write(error: Error) {

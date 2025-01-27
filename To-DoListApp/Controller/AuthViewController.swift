@@ -70,6 +70,9 @@ final class AuthViewController: UIViewController {
     }
     
     private func goToTasksScreen() {
-        navigationController?.pushViewController(TasksListController(), animated: true)
+        if let id = Auth.auth().currentUser?.uid {
+            let service = FirebaseService(user: id)
+            navigationController?.pushViewController(TasksListController(service: service), animated: true)
+        }
     }
 }

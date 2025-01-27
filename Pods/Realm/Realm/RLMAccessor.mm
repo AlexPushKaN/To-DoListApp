@@ -1121,7 +1121,7 @@ RLMAccessorContext::createObject(id value, realm::CreatePolicy policy,
                               (id)value, policy, existingKey, outObj);
     }
     catch (std::exception const& e) {
-        @throw RLMException(e);
+         @throw RLMException(e);
     }
 
     if (objBase) {

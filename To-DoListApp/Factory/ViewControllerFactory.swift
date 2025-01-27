@@ -8,9 +8,10 @@
 import UIKit
 
 final class ViewControllerFactory {
-    static func makeTaskViewController(task: Task? = nil) -> TaskViewController {
+    static func makeTaskViewController(task: Task? = nil, service: TaskServiceProtocol) -> TaskViewController {
         let taskView = TaskView()
         let taskViewController = TaskViewController(task: task, taskView: taskView)
+        taskViewController.service = service
         return taskViewController
     }
 }

@@ -12,6 +12,17 @@ final class TasksListController: UITableViewController {
     //MARK: - properties
     private var items: Results<Task>?
     private var itemsToken: NotificationToken?
+    private var service: TaskServiceProtocol
+    
+    init(service: TaskServiceProtocol) {
+        self.service = service
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     //MARK: - lifecycle
     override func viewDidLoad() {
@@ -29,7 +40,7 @@ final class TasksListController: UITableViewController {
         navigationItem.backBarButtonItem = backButton
         
         tableView.register(TaskTableViewCell.self, forCellReuseIdentifier: TaskTableViewCell.identifier)
-        items = Task.all()
+        items = service.localTasksCollection
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,6 +58,14 @@ final class TasksListController: UITableViewController {
         })
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        service.fetch { [weak self] in
+            guard let self else { return }
+            items = service.localTasksCollection
+        }
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         itemsToken?.invalidate()
@@ -54,15 +73,17 @@ final class TasksListController: UITableViewController {
     
     //MARK: - actions
     @objc private func addItem() {
-        let taskViewController = ViewControllerFactory.makeTaskViewController()
+        let taskViewController = ViewControllerFactory.makeTaskViewController(service: service)
         navigationController?.pushViewController(taskViewController, animated: true)
     }
     
     func toggleItem(_ item: Task) {
-        item.toggleCompleted()
+        guard let updateTask = item.toggleCompleted() else { return }
+        service.toggle(task: updateTask)
     }
     
     func deleteItem(_ item: Task) {
+        service.delete(task: item)
         item.delete()
     }
 }
@@ -88,7 +109,7 @@ extension TasksListController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let item = items?[indexPath.row] else { return }
-        let taskViewController = ViewControllerFactory.makeTaskViewController(task: item)
+        let taskViewController = ViewControllerFactory.makeTaskViewController(task: item, service: service)
         navigationController?.pushViewController(taskViewController, animated: true)
     }
     

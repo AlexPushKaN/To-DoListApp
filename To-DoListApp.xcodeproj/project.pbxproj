@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D31B7692D4357500069645B /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D31B7682D4357500069645B /* FirebaseService.swift */; };
 		4D3E61002D4140590031C919 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4D3E60FF2D4140590031C919 /* GoogleService-Info.plist */; };
 		4D3E61022D4149620031C919 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E61012D4149620031C919 /* AuthViewController.swift */; };
 		4D3E61042D414CE60031C919 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E61032D414CE60031C919 /* AuthView.swift */; };
 		4D3E61062D4157FC0031C919 /* String+EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3E61052D4157FC0031C919 /* String+EmailValidation.swift */; };
+		4D415DBB2D463FF600F437BE /* String+DataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D415DBA2D463FF600F437BE /* String+DataConverter.swift */; };
 		4D97FEA32D3FA347005B1D23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97FEA22D3FA347005B1D23 /* AppDelegate.swift */; };
 		4D97FEA52D3FA347005B1D23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97FEA42D3FA347005B1D23 /* SceneDelegate.swift */; };
 		4D97FEA72D3FA347005B1D23 /* TasksListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D97FEA62D3FA347005B1D23 /* TasksListController.swift */; };
@@ -29,11 +31,13 @@
 
 /* Begin PBXFileReference section */
 		22F551B5378CC1B792327112 /* Pods-To-DoListApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-To-DoListApp.debug.xcconfig"; path = "Target Support Files/Pods-To-DoListApp/Pods-To-DoListApp.debug.xcconfig"; sourceTree = "<group>"; };
+		4D31B7682D4357500069645B /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		4D3E60FF2D4140590031C919 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4D3E61012D4149620031C919 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		4D3E61032D414CE60031C919 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		4D3E61052D4157FC0031C919 /* String+EmailValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+EmailValidation.swift"; sourceTree = "<group>"; };
 		4D3E61072D41687F0031C919 /* To-DoListApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "To-DoListApp.entitlements"; sourceTree = "<group>"; };
+		4D415DBA2D463FF600F437BE /* String+DataConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+DataConverter.swift"; sourceTree = "<group>"; };
 		4D97FE9F2D3FA347005B1D23 /* To-DoListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "To-DoListApp.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D97FEA22D3FA347005B1D23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D97FEA42D3FA347005B1D23 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +77,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		4D31B7672D43572A0069645B /* TaskService */ = {
+			isa = PBXGroup;
+			children = (
+				4D31B7682D4357500069645B /* FirebaseService.swift */,
+			);
+			path = TaskService;
+			sourceTree = "<group>";
+		};
 		4D97FE962D3FA347005B1D23 = {
 			isa = PBXGroup;
 			children = (
@@ -101,6 +113,7 @@
 				4D97FEB02D3FA348005B1D23 /* Info.plist */,
 				4D3E60FF2D4140590031C919 /* GoogleService-Info.plist */,
 				4D97FEAD2D3FA348005B1D23 /* LaunchScreen.storyboard */,
+				4D31B7672D43572A0069645B /* TaskService */,
 				4D97FEE42D3FCAE3005B1D23 /* Factory */,
 				4D97FEDD2D3FB183005B1D23 /* Extension */,
 				4D97FED62D3FAF94005B1D23 /* Model */,
@@ -145,6 +158,7 @@
 				4D97FEEB2D401BA5005B1D23 /* UIAlertController+Extensions.swift */,
 				4D97FEED2D401D32005B1D23 /* String+Validation.swift */,
 				4D3E61052D4157FC0031C919 /* String+EmailValidation.swift */,
+				4D415DBA2D463FF600F437BE /* String+DataConverter.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -286,9 +300,11 @@
 				4D97FEEE2D401D32005B1D23 /* String+Validation.swift in Sources */,
 				4D3E61042D414CE60031C919 /* AuthView.swift in Sources */,
 				4D97FEEC2D401BA5005B1D23 /* UIAlertController+Extensions.swift in Sources */,
+				4D31B7692D4357500069645B /* FirebaseService.swift in Sources */,
 				4D3E61022D4149620031C919 /* AuthViewController.swift in Sources */,
 				4D97FEE32D3FC84C005B1D23 /* TaskViewController.swift in Sources */,
 				4D97FEDF2D3FB1B8005B1D23 /* UITableView+RealmChanges.swift in Sources */,
+				4D415DBB2D463FF600F437BE /* String+DataConverter.swift in Sources */,
 				4D97FEA72D3FA347005B1D23 /* TasksListController.swift in Sources */,
 				4D97FEDC2D3FB140005B1D23 /* TaskTableViewCell.swift in Sources */,
 				4D3E61062D4157FC0031C919 /* String+EmailValidation.swift in Sources */,
